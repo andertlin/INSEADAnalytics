@@ -87,8 +87,16 @@ pnl_plot(SPY)
 
 **Your Answers here:**
 <br>
+1. This is done in dataSet1.R. In the file it pulls the stock tickers SPY and AAPL.
 <br>
+2. round(100*sum(StockReturns[,2]),1)
+   [1] 380.4
+   round(100*mean(StockReturns[,2]),3)
+   [1] 0.137
+   round(100*sd(StockReturns[,2]),3)
+   [1] 2.189
 <br>
+3. Yes, we just need to modify the code to pull YHOO, too.
 <br>
 
 <hr>
@@ -128,7 +136,12 @@ We can also transpose the matrix of returns to create a new "horizontal" matrix.
 
 **Your Answers here:**
 <br>
+1. > dim(transposedData)
+[1]    2 2773
 <br>
+2.portfolio_new = apply(transposedData,2,mean)
+  names(portfolio_new) <- colnames(transposedData)
+  pnl_plot(portfolio_new)
 <br>
 <br>
 
@@ -146,7 +159,9 @@ This is an important step and will get you to think about the overall process on
 
 **Your Answers here:**
 <br>
+1. startDate = "2001-01-01"
 <br>
+2. Yes, update the tickers and rerun the code in dataSet1.R
 <br>
 <br>
 
@@ -180,7 +195,10 @@ myData + StockReturns[1:40,])
 
 **Your Answers here:**
 <br>
+1. sum(myData != StockReturns[1:20,]) 
+   [1] 20
 <br>
+2. there is a syntax error in the code
 <br>
 <br>
 
