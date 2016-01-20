@@ -119,9 +119,9 @@ eigenvalues  <- Variance_Explained_Table[,2]
 ```
 
 ```{r Fig1, echo=FALSE, comment=NA, results='asis', message=FALSE, fig.align='center', fig=TRUE}
-df           <- cbind(as.data.frame(eigenvalues), c(1:length(eigenvalues)), rep(1, length(eigenvalues)))
+df <- cbind(as.data.frame(eigenvalues), c(1:length(eigenvalues)), rep(1, length(eigenvalues)))
 colnames(df) <- c("eigenvalues", "components", "abline")
-Line         <- gvisLineChart(as.data.frame(df), xvar="components", yvar=c("eigenvalues","abline"), options=list(title='Scree plot', legend="right", width=900, height=600, hAxis="{title:'Number of Components', titleTextStyle:{color:'black'}}", vAxes="[{title:'Eigenvalues'}]",  series="[{color:'green',pointSize:3, targetAxisIndex: 0}]"))
+Line <- gvisLineChart(as.data.frame(df), xvar="components", yvar=c("eigenvalues","abline"), options=list(title='Scree plot', legend="right", width=900, height=600, hAxis="{title:'Number of Components', titleTextStyle:{color:'black'}}", vAxes="[{title:'Eigenvalues'}]",  series="[{color:'green',pointSize:3, targetAxisIndex: 0}]"))
 print(Line, 'chart')
 ```
 
@@ -164,8 +164,8 @@ print(m1,'chart')
 
 **Your Answers here:**
 <br>
-1. 6 principal components<br>
-2. 5yr T-Notes, 10yr T-Notes, Treasury Bonds, 2yr T-Notes, Candian Bond, Eurodollar, Euro-Bond, Euro-Bobl, Gilts UK, Euro-Schatz<br>
+1. 6 components  
+2. US Treasury
 3. Yes, the combination of the US Treasuries, a basket of currencies, and few stock indices can explain the majority of the variances. Principle Component Factors<br>
 4. 
 ```{r echo=FALSE, comment=NA, warning=FALSE, error=FALSE,message=FALSE,results='asis'}
@@ -249,7 +249,7 @@ print(m3,'chart')
 
 ```
 <br>
-5. We see more agricultural commodities in the components in the crisis period. We can use a smaller group of components to explain the when it's bearish.The correlations between assests are different between bull and bear markets.
+5. First, there are more agricultural commodities in the components in the crisis period. Second, we can use a smaller group of components to explain the market in the crisis period.The correlations between assests are different between bull and bear markets.
 
 <hr>
 
@@ -330,7 +330,7 @@ How does this compare with **existing CTA products** such as [this one from Soci
 
 **Your Answers here:**
 <br>
-1. This strategy allocates the daily investment based on the weighting of the +/- signs calcualted based on the moving average function ma. 
+1. First it breaks down the time series data into windows. Then it calculates the moving averages of those windows. Transform the ma into 1, 0, and -1 and sum them together. If it is postive then you invest in that future. Scale the daily investments so they add up to $1 everyday. It only uses the information from two days before any given day.
 <br>
 2. 
 ```{r echo=TRUE, eval=TRUE, comment=NA, warning=FALSE,error=FALSE, message=FALSE, prompt=FALSE, tidy=TRUE}
@@ -355,9 +355,6 @@ names(trading_strategy2) <- rownames(futures_data)
 
 pnl_plot(trading_strategy2)
 
-show_data4 = data.frame(cbind(rownames(pnl_matrix(trading_strategy2)), round(pnl_matrix(trading_strategy2),2)))
-m4<-gvisTable(show_data4,options=list(width=1220, height=min(400,27*(nrow(show_data4)+1)),allowHTML=TRUE))
-print(m4,'chart')
 ```
 <br>
 <br>
