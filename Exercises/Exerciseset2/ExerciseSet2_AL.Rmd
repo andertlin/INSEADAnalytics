@@ -163,7 +163,6 @@ print(m1,'chart')
 <br>
 
 **Your Answers here:**
-<br>
 1. 6 components  
 2. US Treasury
 3. Yes, the combination of the US Treasuries, a basket of currencies, and few stock indices can explain the majority of the variances. Principle Component Factors<br>
@@ -329,9 +328,7 @@ How does this compare with **existing CTA products** such as [this one from Soci
 <br>
 
 **Your Answers here:**
-<br>
-1. First it breaks down the time series data into windows. Then it calculates the moving averages of those windows. Transform the ma into 1, 0, and -1 and sum them together. If it is postive then you invest in that future. Scale the daily investments so they add up to $1 everyday. It only uses the information from two days before any given day.
-<br>
+1. First it breaks down the time series data into windows. Then it calculates the moving averages of those windows. Transform the ma into 1, 0, and -1 and sum them together. If it is postive then you long that future. If it is negative you short. Scale the daily investments so they add up to $1 everyday.  
 2. 
 ```{r echo=TRUE, eval=TRUE, comment=NA, warning=FALSE,error=FALSE, message=FALSE, prompt=FALSE, tidy=TRUE}
 signal_used2 = 0*futures_data # just initialize the trading signal to be 0

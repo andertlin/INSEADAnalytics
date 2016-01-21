@@ -87,16 +87,24 @@ pnl_plot(SPY)
 3. *(Extra points)* What if we want to also see the returns of another company, say Yahoo!, in the same period? Can you get that data and report the statistics for Yahoo!'s stock, too? 
 
 **Your Answers here:**
-<br>
 1. This is done in dataSet1.R. In the file the code pulls the stock tickers SPY and AAPL.<br>
-2. round(100*sum(StockReturns[,2]),1)<br>
-   [1] 380.4<br>
-   round(100*mean(StockReturns[,2]),3)<br>
-   [1] 0.137<br>
-   round(100*sd(StockReturns[,2]),3)<br>
-   [1] 2.189<br>
-3. Yes, we just need to modify the code in dataSet1.R to pull YHOO, too.
-<br>
+2. 
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis',fig.align='center', fig.height=4,fig.width= 6, fig=TRUE}
+AAPL = StockReturns[,"AAPL"]
+pnl_plot(AAPL)
+round(100*sum(StockReturns[,2]),1)
+round(100*mean(StockReturns[,2]),3)
+round(100*sd(StockReturns[,2]),3)
+```
+
+3.
+```{r echo=FALSE, comment=NA, warning=FALSE, message=FALSE,results='asis',fig.align='center', fig.height=4,fig.width= 6, fig=TRUE}
+YHOO = StockReturns[,"YHOO"]
+pnl_plot(YHOO)
+round(100*sum(StockReturns[,3]),1)
+round(100*mean(StockReturns[,3]),3)
+round(100*sd(StockReturns[,3]),3)
+```
 
 <hr>
 <hr>
@@ -136,16 +144,16 @@ We can also transpose the matrix of returns to create a new "horizontal" matrix.
 **Your Answers here:**
 <br>
 1. 
-  dim(transposedData)<br>
-  [1]    2 2773<br>
+```{r eval = FALSE, echo=TRUE}
+ dim(transposedData)
+```
+ 
 2.
 ```{r eval = FALSE, echo=TRUE}
   portfolio_new = apply(transposedData,2,mean)
   names(portfolio_new) <- colnames(transposedData)
   pnl_plot(portfolio_new)
 ```
-<br>
-<br>
 
 <hr>
 <hr>
@@ -160,11 +168,8 @@ This is an important step and will get you to think about the overall process on
 2. *(Extra Exercise)*  Can you get the returns of a few companies and plot the returns of an equal weighted portfolio with those companies during some period you select? 
 
 **Your Answers here:**
-<br>
-1. startDate = "2001-01-01"<br>
-2. Yes, update the tickers and rerun the code in dataSet1.R<br>
-<br>
-
+1. startDate = "2001-01-01"  
+2. Yes, update the tickers and rerun the code in dataSet1.R  
 <hr>
 <hr>
 
@@ -194,13 +199,8 @@ myData + StockReturns[1:40,])
 ```
 
 **Your Answers here:**
-<br>
-1. sum(myData != StockReturns[1:20,]) <br>
-   [1] 20<br>
-2. sum(myData != StockReturns[1:40,])<br>
-[1] 20<br>
-<br>
-<br>
+1. sum(myData != StockReturns[1:20,]) = 20  
+2. sum(myData != StockReturns[1:40,]) = 20    
 
 <hr>
 <hr>
